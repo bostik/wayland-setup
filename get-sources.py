@@ -9,6 +9,8 @@ import shutil
 SOURCES_ROOT_DIR = None
 SOURCES_BUILD_DIR = None
 
+# Tools
+TOOLS = set(['git', 'quilt', 'dpkg-buildpackage', 'fakeroot'])
 
 # Keys match the dirnames under p/
 SOURCE_GIT_REPOS = {
@@ -35,7 +37,7 @@ devnull = open('/dev/null', 'w')
 class WaylandSetupError(Exception):
     def __init__(self, msg=None):
         if msg:
-            print('%s' % msg)
+            print('\n%s\n' % msg)
 
 
 
@@ -44,17 +46,22 @@ def check_for(cmd=None):
     if cmd is None:
         raise WaylandSetupError('%s: argument not given' % check_for.__name__)
     #
+    found = False
     sys.stdout.write('Checking for "%s" ... ' % cmd)
     try:
         subprocess.check_call(['which', cmd],
             stdout=devnull,
             stderr=devnull)
         sys.stdout.write('OK')
+        found = True
     except subprocess.CalledProcessError:
         sys.stdout.write('not found')
         pass
     finally:
         sys.stdout.write('\n')
+    #
+    if not found:
+        raise WaylandSetupError('"%s" not found, can not continue' % cmd)
 
 
 def get_or_update_source(repo):
@@ -98,6 +105,7 @@ def build_package(pkg):
             stdin=git_p.stdout, stdout=None)
     git_p.stdout.close() # For SIGPIPE handling
     tar_p.communicate()
+    os.chdir(_d)
 
 
 
@@ -105,7 +113,8 @@ def build_package(pkg):
 
 
 # Let's go!
-check_for('git')
+for t in TOOLS:
+    check_for(t)
 #for r in SOURCE_GIT_REPOS:
 #    get_or_update_source(r)
 
