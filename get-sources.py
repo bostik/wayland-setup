@@ -81,6 +81,13 @@ def get_or_update_source(repo):
         subprocess.check_call(['git', 'clone', SOURCE_GIT_REPOS[repo]])
         os.chdir(_d)
 
+def debian_dir_path(root=None, pkg=None):
+    if root is None:
+        raise WaylandSetupError('ERROR: root dir not specified')
+    if pkg is None:
+        raise WaylandSetupError('ERROR: package name not specified')
+    return os.path.join(root, 'p', pkg, 'debian')
+
 
 
 def build_package(pkg):
@@ -100,11 +107,18 @@ def build_package(pkg):
     # Export naked sources
     _pfx = '--prefix=%s/' % repodir
     git_p = subprocess.Popen(['git', 'archive', '--format=tar', _pfx,
-            SOURCE_GIT_REVS[pkg]], stdout=PIPE)
+            SOURCE_GIT_REVS[pkg]], stdout=subprocess.PIPE)
     tar_p = subprocess.Popen(['tar', '-C', SOURCES_BUILD_DIR, '-xf', '-'],
             stdin=git_p.stdout, stdout=None)
     git_p.stdout.close() # For SIGPIPE handling
     tar_p.communicate()
+    #
+    # Copy debianisation files in place
+    debdir = debian_dir_path(_d, pkg)
+    shutil.copytree(debdir, builddir + '/debian')
+    #
+    os.chdir(builddir)
+    subprocess.check_call(['dpkg-buildpackage', '-rfakeroot'])
     os.chdir(_d)
 
 
