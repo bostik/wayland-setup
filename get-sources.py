@@ -49,8 +49,8 @@ def get_or_update_source(repo):
     if SOURCES_ROOT_DIR is None:
         raise WaylandSetupError('ERROR: directory for source not set.')
     _d = os.getcwd()
-    dirname = '%s.git' % os.path.basename(SOURCE_GIT_REPOS[repo])
-    path = os.path.join(SOURCES_ROOT_DIR, dirname)
+    reponame = os.path.basename(SOURCE_GIT_REPOS[repo])
+    path = os.path.join(SOURCES_ROOT_DIR, reponame)
     if os.path.isdir(path):
         # Update to latest sources
         os.chdir(path)
