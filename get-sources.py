@@ -10,7 +10,7 @@ SOURCES_ROOT_DIR = '/home/bostik/kala'
 SOURCES_BUILD_DIR = '/home/bostik/build'
 
 # Tools
-TOOLS = set(['git', 'quilt', 'dpkg-buildpackage', 'fakeroot'])
+TOOLS = set(['git', 'quilt', 'dpkg-buildpackage', 'fakeroot', 'reprepro'])
 
 # Keys match the dirnames under p/
 SOURCE_GIT_REPOS = {
