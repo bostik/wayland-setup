@@ -3,16 +3,28 @@
 import os
 import sys
 import subprocess
+import shutil
 
 # Edit to match
 SOURCES_ROOT_DIR = None
+SOURCES_BUILD_DIR = None
 
 
+# Keys match the dirnames under p/
 SOURCE_GIT_REPOS = {
     'cairo':        'git://anongit.freedesktop.org/git/cairo',
     'xkbcommon':    'git://anongit.freedesktop.org/xorg/lib/libxkbcommon',
     'mesa':         'git://anongit.freedesktop.org/mesa/mesa',
     'wayland':      'git://anongit.freedesktop.org/wayland/wayland',
+    'weston':       'git://anongit.freedesktop.org/wayland/weston',
+}
+
+# Yeah yeah, single dict and tuples for values instead of this...
+SOURCE_GIT_REVS = {
+    'cairo':        'git://anongit.freedesktop.org/git/cairo',
+    'xkbcommon':    'git://anongit.freedesktop.org/xorg/lib/libxkbcommon',
+    'mesa':         'git://anongit.freedesktop.org/mesa/mesa',
+    'wayland':      '0.95.0',
     'weston':       'git://anongit.freedesktop.org/wayland/weston',
 }
 
@@ -64,11 +76,38 @@ def get_or_update_source(repo):
 
 
 
+def build_package(pkg):
+    if SOURCES_BUILD_DIR is None:
+        raise WaylandSetupError('ERROR: directory for builds not set.')
+    _d = os.getcwd()
+    repodir = os.path.basename(SOURCE_GIT_REPOS[pkg])
+    path = os.path.join(SOURCES_ROOT_DIR, repodir)
+    if not os.path.isdir(path):
+        raise WaylandSetupError('ERROR: not a source dir: %s' % path)
+    #
+    builddir = os.path.join(SOURCES_BUILD_DIR, repodir)
+    os.chdir(path)
+    # Remove previous one, if it exists
+    if os.path.isdir(builddir):
+        shutil.rmtree(builddir)
+    # Export naked sources
+    _pfx = '--prefix=%s/' % repodir
+    git_p = subprocess.Popen(['git', 'archive', '--format=tar', _pfx,
+            SOURCE_GIT_REVS[pkg]], stdout=PIPE)
+    tar_p = subprocess.Popen(['tar', '-C', SOURCES_BUILD_DIR, '-xf', '-'],
+            stdin=git_p.stdout, stdout=None)
+    git_p.stdout.close() # For SIGPIPE handling
+    tar_p.communicate()
+
+
+
+
 
 
 # Let's go!
 check_for('git')
-for r in SOURCE_GIT_REPOS:
-    get_or_update_source(r)
+#for r in SOURCE_GIT_REPOS:
+#    get_or_update_source(r)
 
+build_package('wayland')
 
