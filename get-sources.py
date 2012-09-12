@@ -24,7 +24,7 @@ SOURCE_GIT_REPOS = {
 # Yeah yeah, single dict and tuples for values instead of this...
 SOURCE_GIT_REVS = {
     'cairo':        'git://anongit.freedesktop.org/git/cairo',
-    'xkbcommon':    'git://anongit.freedesktop.org/xorg/lib/libxkbcommon',
+    'xkbcommon':    'origin/master',
     'mesa':         'git://anongit.freedesktop.org/mesa/mesa',
     'wayland':      '0.95.0',
     'weston':       '0.95.0',
@@ -132,6 +132,7 @@ for t in TOOLS:
 #for r in SOURCE_GIT_REPOS:
 #    get_or_update_source(r)
 
-build_package('wayland')
-build_package('weston')
+build_package('xkbcommon')
+#build_package('wayland')
+#build_package('weston')
 
