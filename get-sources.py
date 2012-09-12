@@ -86,7 +86,7 @@ def debian_dir_path(root=None, pkg=None):
         raise WaylandSetupError('ERROR: root dir not specified')
     if pkg is None:
         raise WaylandSetupError('ERROR: package name not specified')
-    return os.path.join(root, 'p', pkg, 'debian')
+    return os.path.join(root, 'p', pkg)
 
 
 
@@ -133,4 +133,5 @@ for t in TOOLS:
 #    get_or_update_source(r)
 
 build_package('wayland')
+build_package('weston')
 
