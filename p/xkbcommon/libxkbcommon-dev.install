@@ -1,4 +1,7 @@
 # Use no wildcards to ensure we spot any update:
+usr/include/xkbcommon/xkbcommon-keysyms.h
+usr/include/xkbcommon/xkbcommon-names.h
+usr/include/xkbcommon/xkbcommon.h
 usr/lib/libxkbcommon.a
 usr/lib/libxkbcommon.so
 usr/lib/pkgconfig/xkbcommon.pc
