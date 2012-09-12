@@ -27,7 +27,7 @@ SOURCE_GIT_REVS = {
     'xkbcommon':    'git://anongit.freedesktop.org/xorg/lib/libxkbcommon',
     'mesa':         'git://anongit.freedesktop.org/mesa/mesa',
     'wayland':      '0.95.0',
-    'weston':       'git://anongit.freedesktop.org/wayland/weston',
+    'weston':       '0.95.0',
 }
 
 # Setup output suppression for subprocess.*
