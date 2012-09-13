@@ -25,7 +25,7 @@ SOURCE_GIT_REPOS = {
 SOURCE_GIT_REVS = {
     'cairo':        'git://anongit.freedesktop.org/git/cairo',
     'xkbcommon':    'origin/master',
-    'mesa':         'mesa-8.0.4',
+    'mesa':         'origin/9.0',
     'wayland':      '0.95.0',
     'weston':       '0.95.0',
 }
