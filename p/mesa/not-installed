@@ -2,8 +2,6 @@
 
 # Common list:
 NOT_INSTALLED := \
-	dri/usr/include/GL/glu.h \
-	dri/usr/include/GL/glu_mangle.h \
 	dri/usr/include/GL/osmesa.h \
 	dri/usr/include/GL/vms_x_fix.h \
 	dri/usr/include/GL/wglext.h \
