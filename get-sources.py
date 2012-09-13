@@ -19,6 +19,7 @@ SOURCE_GIT_REPOS = {
     'mesa':         'git://anongit.freedesktop.org/mesa/mesa',
     'wayland':      'git://anongit.freedesktop.org/wayland/wayland',
     'weston':       'git://anongit.freedesktop.org/wayland/weston',
+    'libdrm':       'git://anongit.freedesktop.org/mesa/drm',
 }
 
 # Yeah yeah, single dict and tuples for values instead of this...
@@ -28,6 +29,7 @@ SOURCE_GIT_REVS = {
     'mesa':         'origin/9.0',
     'wayland':      '0.95.0',
     'weston':       '0.95.0',
+    'libdrm':       '2.4.39',
 }
 
 # Setup output suppression for subprocess.*
@@ -129,11 +131,12 @@ def build_package(pkg):
 # Let's go!
 for t in TOOLS:
     check_for(t)
-#for r in SOURCE_GIT_REPOS:
-#    get_or_update_source(r)
+for r in SOURCE_GIT_REPOS:
+    get_or_update_source(r)
 
 #build_package('xkbcommon')
 #build_package('wayland')
+build_package('libdrm')
 build_package('mesa')
 #build_package('weston')
 
