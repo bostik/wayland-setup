@@ -131,8 +131,8 @@ def build_package(pkg):
 # Let's go!
 for t in TOOLS:
     check_for(t)
-for r in SOURCE_GIT_REPOS:
-    get_or_update_source(r)
+#for r in SOURCE_GIT_REPOS:
+#    get_or_update_source(r)
 
 #build_package('xkbcommon')
 #build_package('wayland')
