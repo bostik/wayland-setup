@@ -132,7 +132,8 @@ for t in TOOLS:
 #for r in SOURCE_GIT_REPOS:
 #    get_or_update_source(r)
 
-build_package('xkbcommon')
+#build_package('xkbcommon')
 #build_package('wayland')
+build_package('mesa')
 #build_package('weston')
 
