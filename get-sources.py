@@ -136,7 +136,7 @@ for t in TOOLS:
 
 #build_package('xkbcommon')
 #build_package('wayland')
-build_package('libdrm')
+#build_package('libdrm')
 build_package('mesa')
 #build_package('weston')
 
