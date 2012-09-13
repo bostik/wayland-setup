@@ -38,10 +38,7 @@ include debian/not-installed
 
 # build the following configurations by default
 CONFIGS = \
-	  dri \
-	  osmesa \
-	  osmesa16 \
-	  osmesa32
+	  dri
 
 STAMP_DIR = debian/stamp
 STAMP = $(STAMP_DIR)/$(DEB_BUILD_GNU_TYPE)
