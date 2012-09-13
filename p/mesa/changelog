@@ -1,7 +1,7 @@
-mesa (8.0.4-2.1) unstable; urgency=high
+mesa (9.0~1-1) unstable; urgency=high
 
   * NMU
-  * Build for Wayland 0.95+
+  * Newer than 8.0 needed for Wayland 0.95+
 
  -- Mika Boström <mika.bostrom@iki.fi>  Thu, 13 Sep 2012 08:33:50 +0300
 
