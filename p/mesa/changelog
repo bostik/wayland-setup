@@ -1,3 +1,10 @@
+mesa (8.0.4-2.1) unstable; urgency=high
+
+  * NMU
+  * Build for Wayland 0.95+
+
+ -- Mika Boström <mika.bostrom@iki.fi>  Thu, 13 Sep 2012 08:33:50 +0300
+
 mesa (8.0.4-2) unstable; urgency=high
 
   * Use xz for all binary packages not just *-dbg.
@@ -581,7 +588,7 @@ mesa (7.8.2-1) experimental; urgency=low
   [ Robert Hooker ]
   * Adjust the build system to install the dri target in a separate
     DESTDIR, no longer passing --libdir=/usr/lib/glx at configure time
-    messing with the .pc's since it is used for a majority of the 
+    messing with the .pc's since it is used for a majority of the
     packages now.
   * Fix up the mesa-common-dev header install location.
 
@@ -602,7 +609,7 @@ mesa (7.8.2-1) experimental; urgency=low
 
   [ Christopher James Halse Rogers ]
   * debian/patches/07-nouveau-update.diff:
-    - Pull in nouveau_class.h header no longer shipped by libdrm 2.4.21 and 
+    - Pull in nouveau_class.h header no longer shipped by libdrm 2.4.21 and
       update nouveau build to use it.  Fixes FTBFS against libdrm 2.4.21.
   * debian/rules:
     - Simplify selecting which gallium drivers are built.  Use this to only
@@ -657,12 +664,12 @@ mesa (7.8.1-2) experimental; urgency=low
   * debian/libgl1-mesa-dri-experimental.install:
   * debian/libgl1-mesa-dri.install:
     - “make install” puts classic and gallium drivers in the same path, but
-      builds gallium drivers in the gallium/ subdirectory.  Copy the drivers 
-      directly from the build path, rather than trying to separate them out 
+      builds gallium drivers in the gallium/ subdirectory.  Copy the drivers
+      directly from the build path, rather than trying to separate them out
       post-hock.
   * debian/control:
     - Add new packages.
-    - Add new build-depends on libx11-xcb-dev, libxcb-dri2-0-dev, 
+    - Add new build-depends on libx11-xcb-dev, libxcb-dri2-0-dev,
       libxcb-xfixes0-dev and python-libxml2 for gallium.
     - Bump build-depends on dpkg-dev for regex in symbols files.
 
@@ -1008,7 +1015,7 @@ mesa (7.1~rc3-1) experimental; urgency=low
   * Drop mesa-swx11-source.
   * Add dri_interface.h to mesa-common-dev.
   * Add gl.pc to libgl1-mesa-dev
-  * rules: Replace the old build system with the new autotools-based 
+  * rules: Replace the old build system with the new autotools-based
     system.
   * Run autoreconf before building the various flavours..
   * Add automake & autoconf to build-deps.
@@ -1458,7 +1465,7 @@ mesa (6.5.0.cvs.20060524-1.1) unstable; urgency=medium
     in a number of places and this makes for more reliable builds than
     depending on alternatives without requiring another dummy -dev
     package from xorg.
-  * Replace references to Source-Version in debian/control with either 
+  * Replace references to Source-Version in debian/control with either
     binary:Version or source:Version, depending on whether the
     relationship references an arch: any or arch: all package, making
     mesa binNMU-safe; add build-depends on dpkg-dev (>= 1.13.19) to
@@ -1873,7 +1880,7 @@ mesa3 (3.4.2.1-4) unstable; urgency=low
   * configure: fix ggi_libdir, ggi_confdir (closes: bug#139598)
 
  -- Marcelo E. Magallon <mmagallo@debian.org>  Sun, 29 Sep 2002 11:21:00 +0200
- 
+
 mesa (3.4.2.1-3) unstable; urgency=low
 
   * Actually install widgets on the mesag-dev package (closes: bug#98988)
@@ -1922,14 +1929,14 @@ mesa (3.4.1-3) unstable; urgency=low
 
   * PLEASE SUBMIT NMUs TO THE BTS, DAMN IT!
   * debian/control: exclude m68k from libggi2-dev build-dependency.
- 
+
  -- Marcelo E. Magallon <mmagallo@debian.org>  Sat, 17 Mar 2001 19:45:09 +0100
 
 mesa (3.4.1-2) unstable; urgency=low
 
   * debian/control: add missing dependency on xlibs-dev and corrected the
     one for libglide2-dev
- 
+
  -- Marcelo E. Magallon <mmagallo@debian.org>  Wed, 14 Mar 2001 00:21:42 +0100
 
 mesa (3.4.1-1) unstable; urgency=low
