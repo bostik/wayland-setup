@@ -55,135 +55,40 @@ confflags-common = \
 DRI_DRIVERS =
 GALLIUM_DRIVERS =
 
-# hurd doesn't do direct rendering
-ifeq ($(DEB_HOST_ARCH_OS), hurd)
-	confflags_DIRECT_RENDERING = --disable-driglx-direct
-	confflags_EGL = --disable-egl
-	confflags_GALLIUM = --with-gallium-drivers=
-	DRI_DRIVERS += swrast
-else
-	EGL_DISPLAYS = x11
+EGL_DISPLAYS = x11
 
-  ifeq ($(DEB_HOST_ARCH_OS), linux)
 # Gallium drivers require libdrm-{nouveau,radeon}, only available on Linux
-	GALLIUM_DRIVERS += nouveau r600 r300 svga
+GALLIUM_DRIVERS += nouveau r600 r300 svga
 # Although the KMS egl drivers will probably build on kfreebsd & hurd
 # only linux actually has KMS drivers implemented at this point.
-	EGL_DISPLAYS += drm
+EGL_DISPLAYS += drm
 # Non-Linux ports also lack *_CLOEXEC and epoll, so wayland isn't ready yet:
-	EGL_DISPLAYS += wayland
-    ifeq (,$(filter $(DEB_HOST_ARCH), s390 s390x))
-	DRI_DRIVERS += r200 radeon nouveau
-    endif
-    ifneq (,$(filter $(DEB_HOST_ARCH_CPU), amd64 i386))
-	DRI_DRIVERS += i915 i965
-    endif
-  endif
+EGL_DISPLAYS += wayland
+DRI_DRIVERS += r200 radeon nouveau
+DRI_DRIVERS += i915 i965
 
 
-# Build the llvmpipe driver only on amd64, i386 until it's tested elsewhere
-  ifeq (,$(filter $(DEB_HOST_ARCH_CPU), amd64 i386))
-	DRI_DRIVERS += swrast
-  else
-	GALLIUM_DRIVERS += swrast
-  endif
+confflags_GALLIUM += --enable-gallium-llvm
 
-  # LLVM is required for r300g and recommended for swrastg on x86:
-  ifneq (,$(filter $(DEB_HOST_ARCH),amd64 i386 kfreebsd-amd64 kfreebsd-i386))
-	confflags_GALLIUM += --enable-gallium-llvm
-  endif
+confflags_EGL=--with-egl-platforms="$(EGL_DISPLAYS)"
+confflags_GALLIUM=--with-gallium-drivers="$(GALLIUM_DRIVERS)"
+confflags_GLES=--enable-gles1--enable-gles2
+confflags_OPENVG=--enable-openvg--enable-gallium-egl
 
-	confflags_DIRECT_RENDERING = --enable-driglx-direct
-	confflags_EGL = --with-egl-platforms="$(EGL_DISPLAYS)"
-	confflags_GALLIUM += --with-gallium-drivers="$(GALLIUM_DRIVERS)"
-	confflags_GLES = --enable-gles1 --enable-gles2
-	confflags_OPENVG = --enable-openvg --enable-gallium-egl
-endif
 
 confflags-dri = \
 	--with-driver=dri \
 	--with-dri-drivers="$(DRI_DRIVERS)" \
 	--with-dri-driverdir=/usr/lib/$(DEB_HOST_MULTIARCH)/dri \
 	--with-dri-searchpath='/usr/lib/$(DEB_HOST_MULTIARCH)/dri:\$$$${ORIGIN}/dri:/usr/lib/dri' \
-	--enable-glx-tls \
+	--disable-glx \
 	--enable-shared-glapi \
 	--enable-texture-float \
 	--enable-xa \
-	$(confflags_DIRECT_RENDERING) \
 	$(confflags_EGL) \
 	$(confflags_GALLIUM) \
 	$(confflags_GLES) \
-	$(confflags_OPENVG) \
-	$(confflags-common)
-
-confflags-osmesa = \
-	--disable-egl \
-	--with-gallium-drivers= \
-	--with-driver=osmesa \
-	$(confflags-common)
-
-confflags-osmesa-static = \
-	--disable-egl \
-	--with-gallium-drivers= \
-	--with-driver=osmesa \
-	--enable-static \
-	$(confflags-common)
-
-confflags-osmesa16 = \
-	--disable-egl \
-	--with-gallium-drivers= \
-	--with-driver=osmesa \
-	--with-osmesa-bits=16 \
-	$(confflags-common)
-
-confflags-osmesa16-static = \
-	--disable-egl \
-	--with-gallium-drivers= \
-	--with-driver=osmesa \
-	--with-osmesa-bits=16 \
-	--enable-static \
-	$(confflags-common)
-
-confflags-osmesa32 = \
-	--disable-egl \
-	--with-gallium-drivers= \
-	--with-driver=osmesa \
-	--with-osmesa-bits=32 \
-	$(confflags-common)
-
-confflags-osmesa32-static = \
-	--disable-egl \
-	--with-gallium-drivers= \
-	--with-driver=osmesa \
-	--with-osmesa-bits=32 \
-	--enable-static \
-	$(confflags-common)
-
-confflags-swx11+glu = \
-	--disable-egl \
-	--with-gallium-drivers= \
-	--with-driver=xlib \
-	--disable-egl \
-	CFLAGS="$(CFLAGS)" \
-	CXXFLAGS="$(CXXFLAGS)"
-
-confflags-swx11+glu-static = \
-	--disable-egl \
-	--with-gallium-drivers= \
-	--with-driver=xlib \
-	--enable-static \
-	--disable-egl \
-	CFLAGS="$(CFLAGS)" \
-	CXXFLAGS="$(CXXFLAGS)"
-
-confflags-swx11+glu-i386-i686 = \
-	--disable-egl \
-	--with-gallium-drivers= \
-	--with-driver=xlib \
-	--disable-egl \
-	--libdir=/usr/lib/$(DEB_HOST_MULTIARCH)/i686/cmov \
-	CFLAGS="$(CFLAGS) -march=i686" \
-	CXXFLAGS="$(CXXFLAGS) -march=i686"
+	$(confflags_OPENVG)
 
 configure: $(QUILT_STAMPFN) configure.ac
 	autoreconf -vfi
@@ -287,12 +192,6 @@ binary-arch: install
 	rm debian/tmp/dri/usr/lib/${DEB_HOST_MULTIARCH}/libglapi.so
 
 	dh_install -s --fail-missing
-
-# If the llvmpipe driver was built, copy it to the package dir
-ifneq (,$(filter swrast,$(GALLIUM_DRIVERS)))
-	dh_install -plibgl1-mesa-dri build/dri/$(DEB_HOST_MULTIARCH)/gallium/swrast_dri.so \
-		usr/lib/${DEB_HOST_MULTIARCH}/dri
-endif
 
 	dh_installman -s
 	dh_lintian -s
