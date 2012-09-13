@@ -37,19 +37,11 @@ endif
 include debian/not-installed
 
 # build the following configurations by default
-CONFIGS = swx11+glu \
-	  swx11+glu-static \
+CONFIGS = \
 	  dri \
 	  osmesa \
-	  osmesa-static \
 	  osmesa16 \
-	  osmesa16-static \
-	  osmesa32 \
-	  osmesa32-static
-
-ifeq ($(DEB_HOST_ARCH_CPU), i386)
-	CONFIGS += swx11+glu-i386-i686
-endif
+	  osmesa32
 
 STAMP_DIR = debian/stamp
 STAMP = $(STAMP_DIR)/$(DEB_BUILD_GNU_TYPE)
