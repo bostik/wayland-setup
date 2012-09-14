@@ -32,10 +32,6 @@ else
 	confflags += --build=$(DEB_BUILD_GNU_TYPE) --host=$(DEB_HOST_GNU_TYPE)
 endif
 
-# keep a list of files we don't install (yet), but since it's a bit
-# large, use an external file:
-include debian/not-installed
-
 # build the following configurations by default
 CONFIGS = \
 	  dri
@@ -183,11 +179,6 @@ binary-arch: install
 	# install the right files manually.
 	rm -r debian/tmp/dri/usr/lib/$(DEB_HOST_MULTIARCH)/dri
 
-	# Also get rid of other files which aren't installed. Do not
-	# use -f to ensure we notice disappearing files:
-	set -e; for file in $(NOT_INSTALLED); do rm debian/tmp/$$file; done
-	# Files only in git, not in tarballs, OK to use rm -f here:
-	set -e; for file in $(NOT_INSTALLED_EITHER); do rm -f debian/tmp/$$file; done
 	# No need for this .so, libglapi is just a convenience library:
 	rm debian/tmp/dri/usr/lib/${DEB_HOST_MULTIARCH}/libglapi.so
 
