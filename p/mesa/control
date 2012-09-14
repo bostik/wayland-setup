@@ -433,29 +433,4 @@ Description: Developer documentation for Mesa
  extensions, the complete set of release notes and the development header
  files common to all Mesa packages.
 
-Package: libglu1-mesa
-Section: libs
-Architecture: any
-Depends:
- ${shlibs:Depends},
- ${misc:Depends},
-Provides: libglu1
-Conflicts: mesag3 (<< 5.0.0-1), xlibmesa3, libglu1
-Replaces: libglu1
-Pre-Depends: ${misc:Pre-Depends}
-Multi-Arch: same
-Description: Mesa OpenGL utility library (GLU)
- GLU offers simple interfaces for building mipmaps; checking for the
- presence of extensions in the OpenGL (or other libraries which follow
- the same conventions for advertising extensions); drawing
- piecewise-linear curves, NURBS, quadrics and other primitives
- (including, but not limited to, teapots); tesselating surfaces; setting
- up projection matrices and unprojecting screen coordinates to world
- coordinates.
- .
- On Linux, this library is also known as libGLU or libGLU.so.1.
- .
- This package provides the SGI implementation of GLU shipped with the
- Mesa package (ergo the "-mesa" suffix).
-
 # vim: tw=0
