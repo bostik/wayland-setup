@@ -46,7 +46,6 @@ include /usr/share/quilt/quilt.make
 confflags-common = \
 	--enable-opengl \
 	--disable-glu \
-	--enable-osmesa \
 	--with-gnu-ld \
 	CFLAGS="$(CFLAGS)" \
 	CXXFLAGS="$(CXXFLAGS)"
