@@ -62,7 +62,7 @@ GALLIUM_DRIVERS +=nouveau,r600,r300,svga
 EGL_DISPLAYS +=,drm
 # Non-Linux ports also lack *_CLOEXEC and epoll, so wayland isn't ready yet:
 EGL_DISPLAYS +=,wayland
-DRI_DRIVERS +=r200,radeon,nouveau
+DRI_DRIVERS +=swrast,r200,radeon,nouveau
 DRI_DRIVERS +=i915,i965
 
 
