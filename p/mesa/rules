@@ -176,11 +176,6 @@ binary-arch: install
 	dh_installdocs -s
 	dh_installexamples -s
 
-	# Classic DRI and Gallium DRI are mixed up together here
-	# Remove the whole tree to avoid false-positives in --list-missing, and
-	# install the right files manually.
-	rm -r debian/tmp/dri/usr/lib/$(DEB_HOST_MULTIARCH)/dri
-
 	# No need for this .so, libglapi is just a convenience library:
 	rm debian/tmp/dri/usr/lib/${DEB_HOST_MULTIARCH}/libglapi.so
 
