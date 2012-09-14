@@ -68,8 +68,8 @@ confflags_GALLIUM += --enable-gallium-llvm
 
 confflags_EGL=--with-egl-platforms="$(EGL_DISPLAYS)"
 confflags_GALLIUM=--with-gallium-drivers="$(GALLIUM_DRIVERS)"
-confflags_GLES=--enable-gles1--enable-gles2
-confflags_OPENVG=--enable-openvg--enable-gallium-egl
+confflags_GLES="--enable-gles1 --enable-gles2"
+confflags_OPENVG="--enable-openvg --enable-gallium-egl"
 
 
 confflags-dri = \
