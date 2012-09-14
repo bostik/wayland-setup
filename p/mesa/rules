@@ -122,7 +122,8 @@ $(STAMP)-build-%: configure
 	../../configure --prefix=/usr --mandir=\$${prefix}/share/man \
 	             --infodir=\$${prefix}/share/info --sysconfdir=/etc \
 	             --libdir=\$${prefix}/lib/$(DEB_HOST_MULTIARCH) \
-	             --localstatedir=/var $(confflags) $(confflags-$*)
+	             --localstatedir=/var $(confflags) \
+				 $(confflags-common) $(confflags-$*)
 	cd $(DEB_BUILD_DIR)/$* && $(MAKE)
 	>$@
 
