@@ -188,10 +188,10 @@ binary-arch: install
 	rm debian/tmp/dri/usr/lib/${DEB_HOST_MULTIARCH}/dri/*.la
 
 	# And kill off some extra headers too
-	rm dri/udr/include/GL/vms_x_fix.h
-	rm dri/udr/include/GL/wmesa.h
-	rm dri/udr/include/GL/wglext.h
-	rm dri/udr/include/GL/osmesa.h
+	rm dri/usr/include/GL/vms_x_fix.h
+	rm dri/usr/include/GL/wmesa.h
+	rm dri/usr/include/GL/wglext.h
+	rm dri/usr/include/GL/osmesa.h
 
 	dh_install -s --fail-missing
 
