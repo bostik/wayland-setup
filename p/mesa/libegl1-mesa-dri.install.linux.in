@@ -1,5 +1,6 @@
 # DRI core
-dri/usr/lib/${DEB_HOST_MULTIARCH}/libdricore9.0.0.so.1.* usr/lib/${DEB_HOST_MULTIARCH}
+dri/usr/lib/${DEB_HOST_MULTIARCH}/libdricore9.0.0.so.1* usr/lib/${DEB_HOST_MULTIARCH}
 
 # DRI drivers
-dri/usr/lib/${DEB_HOST_MULTIARCH}/dri/*.so
+dri/usr/lib/${DEB_HOST_MULTIARCH}/dri/*.so usr/lib/${DEB_HOST_MULTIARCH}/dri
+dri/etc/drirc etc
