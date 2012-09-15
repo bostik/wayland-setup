@@ -183,6 +183,9 @@ binary-arch: install
 	# No need for this .so, libglapi is just a convenience library:
 	rm debian/tmp/dri/usr/lib/${DEB_HOST_MULTIARCH}/libglapi.so
 
+	# No need for .la files
+	rm debian/tmp/dri/usr/lib/${DEB_HOST_MULTIARCH}/*.la
+
 	dh_install -s --fail-missing
 
 	dh_installman -s

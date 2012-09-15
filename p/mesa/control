@@ -200,6 +200,7 @@ Depends:
  libegl1-mesa (= ${binary:Version}),
  libglapi-mesa (= ${binary:Version}),
 Pre-Depends: ${misc:Pre-Depends}
+Provides: libgl1-mesa-drivers (= ${binary:Version})
 Multi-Arch: same
 Description: free implementation of the EGL API -- hardware drivers
  This package contains the EGL native platform graphics interface library.
@@ -224,6 +225,24 @@ Description: free implementation of the EGL API -- driver debugging symbols
  .
  This package contains the debugging symbols for the drivers required for
  hardware accelerated rendering of EGL-based graphics libraries.
+
+Package: libegl1-mesa-dri
+Section: libs
+Architecture: linux-any kfreebsd-any
+Depends:
+ ${shlibs:Depends},
+ ${misc:Depends},
+ libegl1-mesa (= ${binary:Version}),
+ libglapi-mesa (= ${binary:Version}),
+Pre-Depends: ${misc:Pre-Depends}
+Multi-Arch: same
+Description: free implementation of the EGL API -- DRI hardware drivers
+ This package contains the EGL native platform graphics interface library.
+ EGL provides a platform-agnostic mechanism for creating rendering surfaces
+ for use with other graphics libraries, such as OpenGL|ES and OpenVG.
+ .
+ This package contains the drivers required for hardware accelerated rendering
+ of EGL-based graphics libraries, such as OpenGL|ES and OpenVG.
 
 Package: libopenvg1-mesa
 Section: libs
