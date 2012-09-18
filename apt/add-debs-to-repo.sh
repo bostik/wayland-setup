@@ -32,5 +32,5 @@ for f in ${DEBDIR}/*.deb; do
 done
 
 # Eventually make sure that the packages are cleaned up after insert
-echo "WOULD RUN: rm -f ${DEBDIR}/*.deb"
+echo "rm -f ${DEBDIR}/*.deb"
 
