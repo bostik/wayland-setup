@@ -134,7 +134,7 @@ def install_pkgs(pkgs=None):
     apt_args = ['sudo', 'aptitude', 'update']
     subprocess.check_call(apt_args)
     #
-    apt_args = ['sudo', 'aptitude', 'install']
+    apt_args = ['sudo', 'aptitude', '-y', 'install']
     apt_args.extend(pkgs)
     subprocess.check_call(apt_args)
 
