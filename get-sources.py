@@ -124,7 +124,7 @@ def build_package(pkg):
     os.chdir(_d)
 
 def import_debs():
-    subprocess.check_call(['./apt/add-debs-to-repo.sh', SOURCES_BUILD_DIR)
+    subprocess.check_call(['./apt/add-debs-to-repo.sh', SOURCES_BUILD_DIR])
     debfiles = glob.glob(SOURCES_BUILD_DIR + '/*.*')
     for df in debfiles:
         os.remove(df)
