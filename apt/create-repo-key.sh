@@ -14,3 +14,8 @@ fi
 # Create an unencrypted (no passphrase) GPG key
 /usr/bin/gpg --gen-key --batch apt/gpg-key-params
 
+# Feed public key to APT
+/usr/bin/gpg --no-default-keyring \
+    --keyring /var/tmp/wayland-repo-key.pub \
+    --armor --export wayland | sudo apt-key add -
+
