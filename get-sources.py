@@ -4,6 +4,7 @@ import os
 import sys
 import subprocess
 import shutil
+import glob
 
 # Edit to match
 SOURCES_ROOT_DIR = '/home/bostik/kala'
