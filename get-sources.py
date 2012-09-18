@@ -123,8 +123,11 @@ def build_package(pkg):
     subprocess.check_call(['dpkg-buildpackage', '-rfakeroot', '-b', '-uc'])
     os.chdir(_d)
 
-
-
+def import_debs():
+    subprocess.check_call(['./apt/add-debs-to-repo.sh', SOURCES_BUILD_DIR)
+    debfiles = glob.glob(SOURCES_BUILD_DIR + '/*.*')
+    for df in debfiles:
+        os.remove(df)
 
 
 
@@ -134,7 +137,10 @@ for t in TOOLS:
 for r in SOURCE_GIT_REPOS:
     get_or_update_source(r)
 
+# Build packages, import to repo, install required packages from there
 build_package('xkbcommon')
+import_debs()
+
 #build_package('wayland')
 #build_package('libdrm')
 #build_package('mesa')
