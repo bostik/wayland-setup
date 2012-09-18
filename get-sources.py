@@ -150,7 +150,7 @@ def wipe_apt_repo():
         shutil.rmtree(APT_REPO_DIR)
 
 def setup_apt_repo():
-    if not os.path.exists('/etc/apt/sources.list.d/wayland-local.list')
+    if not os.path.exists('/etc/apt/sources.list.d/wayland-local.list'):
         subprocess.check_call(['sudo', 'cp', 'apt/wayland-local.list',
                 '/etc/apt/sources.list.d/'])
 
