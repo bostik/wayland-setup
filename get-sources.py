@@ -10,6 +10,9 @@ import glob
 SOURCES_ROOT_DIR = '/home/bostik/kala'
 SOURCES_BUILD_DIR = '/home/bostik/build'
 
+# Do not touch
+APT_REPO_DIR = '/var/tmp/wayland-devel-repo'
+
 # Tools
 TOOLS = set(['git', 'quilt', 'dpkg-buildpackage', 'fakeroot', 'reprepro'])
 
@@ -124,13 +127,32 @@ def build_package(pkg):
     subprocess.check_call(['dpkg-buildpackage', '-rfakeroot', '-b', '-uc'])
     os.chdir(_d)
 
+def install_pkgs(pkgs=None):
+    if pkgs is None:
+        raise WaylandSetupError('ERROR: No packages defined')
+    # Make sure we have the latest list
+    apt_args = ['sudo', 'aptitude', 'update']
+    subprocess.check_call(apt_args)
+    #
+    apt_args = ['sudo', 'aptitude', 'install']
+    apt_args.extend(pkgs)
+    subprocess.check_call(apt_args)
+
+
 def import_debs():
     subprocess.check_call(['./apt/add-debs-to-repo.sh', SOURCES_BUILD_DIR])
     debfiles = glob.glob(SOURCES_BUILD_DIR + '/*.*')
     for df in debfiles:
         os.remove(df)
 
+def wipe_apt_repo():
+    if os.path.isdir(APT_REPO_DIR):
+        shutil.rmtree(APT_REPO_DIR)
 
+def setup_apt_repo():
+    if not os.path.exists('/etc/apt/sources.list.d/wayland-local.list')
+        subprocess.check_call(['sudo', 'cp', 'apt/wayland-local.list',
+                '/etc/apt/sources.list.d/'])
 
 # Let's go!
 for t in TOOLS:
@@ -138,9 +160,14 @@ for t in TOOLS:
 for r in SOURCE_GIT_REPOS:
     get_or_update_source(r)
 
+# Clear target
+wipe_apt_repo()
+setup_apt_repo()
+
 # Build packages, import to repo, install required packages from there
 build_package('xkbcommon')
 import_debs()
+install_pkgs(['libxkbcommon-dev'])
 
 #build_package('wayland')
 #build_package('libdrm')
