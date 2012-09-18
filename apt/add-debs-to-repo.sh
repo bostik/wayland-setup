@@ -1,7 +1,12 @@
 #!/bin/sh
 
 REPODIR=/var/tmp/wayland-devel-repo
-DEBDIR=$(pwd)/build
+DEBDIR=$1
+
+if [ "x$1" = "x" ]; then
+    echo "DEBDIR not provided as first argument"
+    exit 1
+fi
 
 if [ ! -d ${DEBDIR} ]; then
     echo "Directory ./build not present"
