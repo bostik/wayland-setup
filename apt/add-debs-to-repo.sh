@@ -30,7 +30,3 @@ cd ${REPODIR}
 for f in ${DEBDIR}/*.deb; do
     reprepro includedeb wayland-local $f
 done
-
-# Eventually make sure that the packages are cleaned up after insert
-echo "rm -f ${DEBDIR}/*.deb"
-
