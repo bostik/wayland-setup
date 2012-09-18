@@ -28,7 +28,7 @@ cd ${REPODIR}
 
 # Add specified .deb files to repository
 for f in ${DEBDIR}/*.deb; do
-    reprepro includedeb wayland-development $f
+    reprepro includedeb wayland-local $f
 done
 
 # Eventually make sure that the packages are cleaned up after insert
