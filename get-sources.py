@@ -124,7 +124,7 @@ def build_package(pkg):
     shutil.copytree(debdir, builddir + '/debian')
     #
     os.chdir(builddir)
-    subprocess.check_call(['dpkg-buildpackage', '-rfakeroot', '-b', '-uc'])
+    subprocess.check_call(['dpkg-buildpackage', '-rfakeroot', '-b', '-uc', '-us'])
     os.chdir(_d)
 
 def install_pkgs(pkgs=None):
