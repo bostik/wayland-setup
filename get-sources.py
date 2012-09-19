@@ -226,6 +226,9 @@ import_debs()
 install_pkgs(['libgles2-mesa-dev', 'libegl1-mesa-dri',  'libgbm-dev',
     'mesa-common-dev', 'libegl1-mesa-dev'])
 
+# Extra packages for cairo
+install_pkgs(['libxt-dev'])
+
 build_package('cairo')
 import_debs()
 
