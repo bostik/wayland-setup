@@ -157,6 +157,8 @@ def set_repo_key():
     f.write('SignWith: 0x' + keyid + '\n')
     f.close()
 
+def create_key():
+    subprocess.check_call(['./apt/create-repo-key.sh']
 
 
 def import_debs():
