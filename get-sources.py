@@ -139,6 +139,26 @@ def install_pkgs(pkgs=None):
     subprocess.check_call(apt_args)
 
 
+def set_repo_key():
+    # Get key ID
+    gpgout = subprocess.check_output(['/usr/bin/gpg',
+        '--no-default-keyring',
+        '--keyring', '/var/tmp/wayland-repo-key.pub',
+        '--list-keys', 'wayland'])
+    gpgout_s = str(gpgout)
+    lines = gpgout_s.split('\n')
+    keyline = lines[0]
+    toks = keyline.split()
+    len_id = toks[1]
+    (keylen, keyid) = len_id.split('/')
+    #
+    # Append to repository config
+    f = open('./apt/repository.distributions', 'rw')
+    f.write('SignWith: 0x' + keyid + '\n')
+    f.close()
+
+
+
 def import_debs():
     subprocess.check_call(['./apt/add-debs-to-repo.sh', SOURCES_BUILD_DIR])
     debfiles = glob.glob(SOURCES_BUILD_DIR + '/*.*')
@@ -154,11 +174,20 @@ def setup_apt_repo():
         subprocess.check_call(['sudo', 'cp', 'apt/wayland-local.list',
                 '/etc/apt/sources.list.d/'])
 
+
+
 # Let's go!
 for t in TOOLS:
     check_for(t)
 for r in SOURCE_GIT_REPOS:
     get_or_update_source(r)
+
+
+# Calls an external script which deals with the generation,
+# turns into no-op if key is already present
+create_key()
+set_repo_key()
+
 
 # Clear target
 wipe_apt_repo()

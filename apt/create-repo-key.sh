@@ -18,13 +18,3 @@ fi
 /usr/bin/gpg --no-default-keyring \
     --keyring /var/tmp/wayland-repo-key.pub \
     --armor --export wayland | sudo apt-key add -
-
-# Get key ID
-_keyid=$(/usr/bin/gpg --no-default-keyring \
-    --keyring /var/tmp/wayland-repo-key.pub \
-    --list-keys wayland | grep ^pub | awk '{print $2}' \
-    | cut -d'/' -f2)
-
-# Append key ID to repository configuration
-echo "SignWith: ${_keyid}" >> ./apt/repository.distributions
-
