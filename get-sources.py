@@ -213,8 +213,14 @@ build_package('xkbcommon')
 import_debs()
 install_pkgs(['libxkbcommon-dev'])
 
-#build_package('wayland')
-#build_package('libdrm')
+build_package('wayland')
+import_debs()
+install_pkgs(['libwayland-dev'])
+
+build_package('libdrm')
+import_debs()
+
+### Stop here while testing...
 #build_package('mesa')
 #build_package('weston')
 
