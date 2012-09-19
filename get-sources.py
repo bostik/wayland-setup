@@ -223,8 +223,8 @@ install_pkgs(['libdrm-dev'])
 
 build_package('mesa')
 import_debs()
-install_pkgs(['libgles2-mesa-dev', 'libegl1-mesa-dri',  'libgbm-dev'
-    'mesa-common-dev', 'libegl1-mesa-dev'])
+install_pkgs(['libgles2-mesa-dev', 'libegl1-mesa-dri',  'libgbm-dev',
+    'mesa-common-dev', 'libegl1-mesa-dev', 'libxcursor-dev'])
 
 ### Stop here while testing...
 #build_package('weston')
