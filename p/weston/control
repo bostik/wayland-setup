@@ -26,6 +26,7 @@ Build-Depends:
  libxcursor-dev,
  libcairo2-dev,
  libgdk-pixbuf2.0-dev,
+ libpam0g-dev
 Standards-Version: 3.9.2
 Vcs-Git: git://git.debian.org/git/pkg-xorg/wayland/weston
 Vcs-Browser: http://git.debian.org/?p=pkg-xorg/wayland/weston.git

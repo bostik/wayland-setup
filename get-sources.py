@@ -228,7 +228,7 @@ install_pkgs(['libgles2-mesa-dev', 'libegl1-mesa-dri',  'libgbm-dev',
 
 # Weston needs even more packages. Those not related to mesa are
 # installed in separate step to keep the flow easier to follow.
-install_pkgs(['libxcursor-dev', 'libmtdev-dev'])
+install_pkgs(['libxcursor-dev', 'libmtdev-dev', 'libpam0g-dev'])
 
 ### Stop here while testing...
 #build_package('weston')
