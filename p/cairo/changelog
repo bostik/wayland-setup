@@ -3,6 +3,8 @@ cairo (1.12.2-2.1egl) unstable; urgency=low
   * NMU
   * Build with EGL/GLESv2 support
 
+ -- Mika Boström <mika.bostrom@iki.fi>  Thu, 19 Sep 2012 19:01:38 +0300
+
 cairo (1.12.2-2) unstable; urgency=low
 
   * debian/libcairo2-udeb.install:
