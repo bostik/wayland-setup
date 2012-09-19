@@ -158,7 +158,7 @@ def set_repo_key():
     f.close()
 
 def create_key():
-    subprocess.check_call(['./apt/create-repo-key.sh']
+    subprocess.check_call(['./apt/create-repo-key.sh'])
 
 
 def import_debs():
