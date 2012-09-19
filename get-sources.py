@@ -154,7 +154,7 @@ def set_repo_key():
     #
     # Append to repository config
     f = open('./apt/repository.distributions', 'a')
-    f.write('SignWith: 0x' + keyid + '\n')
+    f.write('SignWith: ' + keyid + '\n')
     f.close()
 
 def create_key():
