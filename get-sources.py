@@ -219,8 +219,13 @@ install_pkgs(['libwayland-dev'])
 
 build_package('libdrm')
 import_debs()
+install_pkgs(['libdrm-dev'])
+
+build_package('mesa')
+import_debs()
+install_pkgs(['libgles2-mesa-dev', 'libegl1-mesa-dri',  'libgbm-dev'
+    'mesa-common-dev', 'libegl1-mesa-dev'])
 
 ### Stop here while testing...
-#build_package('mesa')
 #build_package('weston')
 
