@@ -28,7 +28,7 @@ SOURCE_GIT_REPOS = {
 
 # Yeah yeah, single dict and tuples for values instead of this...
 SOURCE_GIT_REVS = {
-    'cairo':        'git://anongit.freedesktop.org/git/cairo',
+    'cairo':        '1.12.2',
     'xkbcommon':    'origin/master',
     'mesa':         'origin/9.0',
     'wayland':      '0.95.0',
@@ -225,6 +225,9 @@ build_package('mesa')
 import_debs()
 install_pkgs(['libgles2-mesa-dev', 'libegl1-mesa-dri',  'libgbm-dev',
     'mesa-common-dev', 'libegl1-mesa-dev'])
+
+build_package('cairo')
+import_debs()
 
 # Weston needs even more packages. Those not related to mesa are
 # installed in separate step to keep the flow easier to follow.
