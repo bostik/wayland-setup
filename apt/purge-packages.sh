@@ -8,4 +8,4 @@ BASEPKGS="libglapi-mesa mesa-common-dev libgl1-mesa-dri libdrm2 "
 BASEPKGS+="libxkbcommon0"
 
 # Remove everything
-sudo aptitude purge ${BASEPKGS}
+sudo aptitude -y purge ${BASEPKGS}
