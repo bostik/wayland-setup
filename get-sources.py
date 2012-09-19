@@ -186,8 +186,15 @@ for r in SOURCE_GIT_REPOS:
 
 
 # Calls an external script which deals with the generation,
-# turns into no-op if key is already present
+# turns into no-op if key is already present.
+# NOTE: imports the keys into user's GPG keyring. See comment below.
 create_key()
+
+# Extract key ID and use in repository configuration
+# Thanks to reprepro<->gpgme interaction, we can't use the desired gpg
+# command line arguments (or their library equivalents). This in turn
+# means that the GPG key **MUST** be in the user's keyring. We've done
+# this in create_key() so the signing key is available in this step.
 set_repo_key()
 
 

@@ -18,3 +18,6 @@ fi
 /usr/bin/gpg --no-default-keyring \
     --keyring /var/tmp/wayland-repo-key.pub \
     --armor --export wayland | sudo apt-key add -
+
+# Import the key
+/usr/bin/gpg --import /var/tmp/wayland-repo-key.sec
