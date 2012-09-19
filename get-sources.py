@@ -176,6 +176,9 @@ def setup_apt_repo():
         subprocess.check_call(['sudo', 'cp', 'apt/wayland-local.list',
                 '/etc/apt/sources.list.d/'])
 
+def purge_packages():
+    subprocess.check_call(['./apt/purge-packages.sh'])
+
 
 
 # Let's go!
@@ -197,6 +200,9 @@ create_key()
 # this in create_key() so the signing key is available in this step.
 set_repo_key()
 
+
+# Purge everything in the system
+purge_packages()
 
 # Clear target
 wipe_apt_repo()
