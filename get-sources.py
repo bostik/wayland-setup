@@ -227,7 +227,8 @@ install_pkgs(['libgles2-mesa-dev', 'libegl1-mesa-dri',  'libgbm-dev',
     'mesa-common-dev', 'libegl1-mesa-dev'])
 
 # Extra packages for cairo
-install_pkgs(['libxt-dev'])
+install_pkgs(['libxt-dev', 'libfontconfig1-dev', 'libfreetype6-dev',
+    'libxcb-shm0-dev'])
 
 build_package('cairo')
 import_debs()

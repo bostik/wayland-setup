@@ -21,7 +21,8 @@ Build-Depends: debhelper (>= 8.1.3),
                libxcb-render0-dev (>= 1.6),
                libxcb-shm0-dev,
 #               libgl1-mesa-dev,
-#               libegl1-mesa-dev [!hurd-any],
+               libegl1-mesa-dev [!hurd-any],
+               libgles2-mesa-dev,
                libglib2.0-dev,
                zlib1g-dev
 Standards-Version: 3.8.4

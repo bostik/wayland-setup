@@ -44,7 +44,6 @@ configure_flags += \
 --enable-xlib \
 --enable-png \
 --enable-tee \
---enable-drm \
 --enable-egl \
 --enable-glesv2 \
 --disable-silent-rules \
@@ -89,6 +88,7 @@ configure-common-stamp:
 	  mv src/cairo-features.h src/cairo-features.h.orig
 	./autogen.sh
 	rm -f config.status config.log
+	rm -f src/cairo-features.h
 	dh_autoreconf
 	patch -Np1 < debian/ltmain_as-needed.patch
 	touch $@
