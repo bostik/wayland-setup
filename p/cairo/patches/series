@@ -3,3 +3,4 @@
 03_export-symbols.patch
 05-flto.patch
 06_hurd-map-noreserve.patch
+fix-surfaceless-extension.patch
