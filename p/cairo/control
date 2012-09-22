@@ -144,15 +144,3 @@ Description: The Cairo 2D vector graphics library performance utilities
  execution traces using various backends, in order to be able to measure the
  performance of cairo for real-world applications in a reproducible way.
 
-Package: libcairo2-udeb
-XC-Package-Type: udeb
-Section: debian-installer
-Architecture: any
-Depends: ${shlibs:Depends}
-Description: The Cairo 2D vector graphics library Xlib backend
- Cairo is a multi-platform library providing anti-aliased
- vector-based rendering for multiple target backends.
- .
- This is version of cairo with only the Xlib backend, intended
- primarily for use in the graphical Debian installer.
-
