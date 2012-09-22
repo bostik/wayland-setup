@@ -103,18 +103,6 @@ Description: The Cairo 2D vector graphics library (debugging symbols)
  Debugging symbols for the Cairo 2D vector graphics library. This is
  needed to debug programs linked against libcairo2.
 
-Package: libcairo2-doc
-Section: doc
-Architecture: all
-Depends: ${misc:Depends}
-Recommends: lynx | www-browser
-Description: Documentation for the Cairo Multi-platform 2D graphics library
- Cairo is a multi-platform library providing anti-aliased
- vector-based rendering for multiple target backends.
- .
- This package contains the HTML documentation for the Cairo library
- in /usr/share/gtk-doc/html/cairo/.
-
 Package: libcairo-script-interpreter2
 Section: libs
 Architecture: any
