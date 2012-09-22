@@ -244,58 +244,6 @@ Description: free implementation of the EGL API -- DRI hardware drivers
  This package contains the drivers required for hardware accelerated rendering
  of EGL-based graphics libraries, such as OpenGL|ES and OpenVG.
 
-Package: libopenvg1-mesa
-Section: libs
-Architecture: linux-any kfreebsd-any
-Depends:
- ${shlibs:Depends},
- ${misc:Depends},
-Provides: libopenvg1
-Conflicts: libopenvg1
-Replaces: libopenvg1
-Pre-Depends: ${misc:Pre-Depends}
-Multi-Arch: same
-Description: free implementation of the OpenVG API -- runtime
- This package contains the mesa implementation of the OpenVG 2D acceleration
- library.  OpenVG provides a device independent and vendor-neutral interface
- for sophisticated 2D graphical applications, while allowing device
- manufacturers to provide hardware acceleration on devices ranging from wrist
- watches to full microprocessor-based desktop and server machines.
-
-Package: libopenvg1-mesa-dbg
-Section: debug
-Priority: extra
-Architecture: linux-any kfreebsd-any
-Depends:
- libopenvg1-mesa (= ${binary:Version}),
- ${misc:Depends},
-Multi-Arch: same
-Description: free implementation of the OpenVG API -- debugging symbols
- This package contains the mesa implementation of the OpenVG 2D acceleration
- library.  OpenVG provides a device independent and vendor-neutral interface
- for sophisticated 2D graphical applications, while allowing device
- manufacturers to provide hardware acceleration on devices ranging from wrist
- watches to full microprocessor-based desktop and server machines.
- .
- This package contains the debugging symbols for the OpenVG library.
-
-Package: libopenvg1-mesa-dev
-Section: libdevel
-Architecture: linux-any kfreebsd-any
-Depends:
- libopenvg1-mesa (= ${binary:Version}),
- libegl1-mesa-dev,
- ${misc:Depends},
-Description: free implementation of the OpenVG API -- development files
- This package contains the mesa implementation of the OpenVG 2D acceleration
- library.  OpenVG provides a device independent and vendor-neutral interface
- for sophisticated 2D graphical applications, while allowing device
- manufacturers to provide hardware acceleration on devices ranging from wrist
- watches to full microprocessor-based desktop and server machines.
- .
- This package contains the development environment required for compiling
- programs against the OpenVG 2D acceleration library.
-
 Package: libgles1-mesa
 Section: libs
 Architecture: linux-any kfreebsd-any
