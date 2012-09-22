@@ -1,5 +1,7 @@
 usr/bin/weston
 usr/bin/weston-terminal
+usr/bin/weston-launch
+usr/bin/wcap-decode
 
 usr/lib/weston/weston-tablet-shell
 usr/lib/weston/weston-desktop-shell
@@ -8,5 +10,6 @@ usr/lib/weston/desktop-shell.so
 usr/lib/weston/drm-backend.so
 usr/lib/weston/tablet-shell.so
 usr/lib/weston/wayland-backend.so
+usr/lib/weston/weston-screenshooter
 
 usr/share/weston

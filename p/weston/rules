@@ -4,6 +4,7 @@ override_dh_auto_configure:
 	dh_auto_configure -- --disable-setuid-install \
 		--enable-drm-compositor \
 		--disable-x11-compositor \
+		--disable-xwayland \
 		--enable-setuid-install \
 		--enable-weston-launch \
 		--with-cairo-glesv2 \
