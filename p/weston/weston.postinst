@@ -1,0 +1,10 @@
+#!/bin/sh
+
+# Add weston-launch group if it does not exist yet
+grep -q weston-launch /etc/group
+if [ $? != 0 ]; then
+    addgroup --system weston-launch
+fi
+
+# Suid weston-launch
+chmod u+s /usr/bin/weston-launch
