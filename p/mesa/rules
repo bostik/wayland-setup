@@ -88,8 +88,7 @@ confflags-dri = \
 	--enable-xa \
 	$(confflags_EGL) \
 	$(confflags_GALLIUM) \
-	$(confflags_GLES) \
-	$(confflags_OPENVG)
+	$(confflags_GLES)
 
 configure: $(QUILT_STAMPFN) configure.ac
 	autoreconf -vfi
