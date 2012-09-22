@@ -240,4 +240,9 @@ install_pkgs(['libxcursor-dev', 'libmtdev-dev', 'libpam0g-dev'])
 
 ### Stop here while testing...
 build_package('weston')
+import_debs()
+
+
+# Now we should have all the bits in place for testing...
+install_pkgs(['weston'])
 
