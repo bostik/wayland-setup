@@ -232,11 +232,12 @@ install_pkgs(['libxt-dev', 'libfontconfig1-dev', 'libfreetype6-dev',
 
 build_package('cairo')
 import_debs()
+install_pkgs(['libcairo2-dev'])
 
 # Weston needs even more packages. Those not related to mesa are
 # installed in separate step to keep the flow easier to follow.
 install_pkgs(['libxcursor-dev', 'libmtdev-dev', 'libpam0g-dev'])
 
 ### Stop here while testing...
-#build_package('weston')
+build_package('weston')
 
