@@ -1,0 +1,28 @@
+commit 7bb168231980b60e8a58324e8bee69c7601a12cd
+Author: Mika Boström <bostik@odin.bostik.iki.fi>
+Date:   Mon Sep 24 09:23:43 2012 +0300
+
+    Install all clients
+    
+    For demonstration purposes this is cleaner.
+
+diff --git a/clients/Makefile.am b/clients/Makefile.am
+index 133eaca..76f785d 100644
+--- a/clients/Makefile.am
++++ b/clients/Makefile.am
+@@ -1,11 +1,11 @@
+ bin_PROGRAMS =					\
+-	$(terminal)
+-
+-noinst_PROGRAMS =				\
+ 	$(clients_programs)			\
+-	$(poppler_programs)			\
++	$(terminal)					\
+ 	$(simple_clients_programs)
+ 
++noinst_PROGRAMS =				\
++	$(poppler_programs)
++
+ libexec_PROGRAMS =				\
+ 	$(desktop_shell)			\
+ 	$(tablet_shell)				\

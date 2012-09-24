@@ -3,6 +3,19 @@ usr/bin/weston-terminal
 usr/bin/weston-launch
 usr/bin/wcap-decode
 
+usr/bin/clickdot
+usr/bin/dnd
+usr/bin/editor
+usr/bin/eventdemo
+usr/bin/flower
+usr/bin/image
+usr/bin/keyboard
+usr/bin/resizor
+usr/bin/simple-egl
+usr/bin/simple-shm
+usr/bin/simple-touch
+usr/bin/smoke
+
 usr/lib/weston/weston-tablet-shell
 usr/lib/weston/weston-desktop-shell
 
