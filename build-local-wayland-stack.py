@@ -170,6 +170,12 @@ def import_debs():
         print('\t%s' % df)
         os.remove(df)
 
+def wipe_build_dir():
+    print('Recreating build dir: %s' % SOURCES_BUILD_DIR)
+    if os.path.isdir(SOURCES_BUILD_DIR):
+        shutil.rmtree(SOURCES_BUILD_DIR)
+    os.mkdir(SOURCES_BUILD_DIR)
+
 def wipe_apt_repo():
     print('Removing APT repository: %s' % APT_REPO_DIR)
     if os.path.isdir(APT_REPO_DIR):
@@ -213,6 +219,9 @@ purge_packages()
 # Clear target
 wipe_apt_repo()
 setup_apt_repo()
+
+# Reset build environment
+wipe_build_dir()
 
 # Build packages, import to repo, install required packages from there
 build_package('xkbcommon')
