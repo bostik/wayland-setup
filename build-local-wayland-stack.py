@@ -158,25 +158,31 @@ def set_repo_key():
     f.close()
 
 def create_key():
+    print('Checking for repository signing key...')
     subprocess.check_call(['./apt/create-repo-key.sh'])
 
 
 def import_debs():
+    print('Importing debian files...')
     subprocess.check_call(['./apt/add-debs-to-repo.sh', SOURCES_BUILD_DIR])
     debfiles = glob.glob(SOURCES_BUILD_DIR + '/*.*')
     for df in debfiles:
+        print('\t%s' % df)
         os.remove(df)
 
 def wipe_apt_repo():
+    print('Removing APT repository: %s' % APT_REPO_DIR)
     if os.path.isdir(APT_REPO_DIR):
         shutil.rmtree(APT_REPO_DIR)
 
 def setup_apt_repo():
+    print('Checking for APT repository config...')
     if not os.path.exists('/etc/apt/sources.list.d/wayland-local.list'):
         subprocess.check_call(['sudo', 'cp', 'apt/wayland-local.list',
                 '/etc/apt/sources.list.d/'])
 
 def purge_packages():
+    print('Purging existing Wayland stack...')
     subprocess.check_call(['./apt/purge-packages.sh'])
 
 
