@@ -6,8 +6,9 @@ import subprocess
 import shutil
 import glob
 
-# Edit to match
 _HOME = os.path.expanduser('~')
+
+# Edit to match
 SOURCES_ROOT_DIR = os.path.join(_HOME, 'kala')
 SOURCES_BUILD_DIR = os.path.join(_HOME, 'build')
 
@@ -153,8 +154,9 @@ def set_repo_key():
     len_id = toks[1]
     (keylen, keyid) = len_id.split('/')
     #
-    # Append to repository config
-    f = open('./apt/repository.distributions', 'a')
+    # Append to repository config (*in* repo conf dir)
+    confpath = os.path.join(APT_REPO_DIR, 'conf', 'distributions')
+    f = open(confpath, 'a')
     f.write('SignWith: ' + keyid + '\n')
     f.close()
 
@@ -206,6 +208,14 @@ for r in SOURCE_GIT_REPOS:
 # NOTE: imports the keys into user's GPG keyring. See comment below.
 create_key()
 
+# Purge everything in the system
+purge_packages()
+
+# Clear target
+wipe_apt_repo()
+setup_apt_repo()
+
+
 # Extract key ID and use in repository configuration
 # Thanks to reprepro<->gpgme interaction, we can't use the desired gpg
 # command line arguments (or their library equivalents). This in turn
@@ -213,13 +223,6 @@ create_key()
 # this in create_key() so the signing key is available in this step.
 set_repo_key()
 
-
-# Purge everything in the system
-purge_packages()
-
-# Clear target
-wipe_apt_repo()
-setup_apt_repo()
 
 # Reset build environment
 wipe_build_dir()
