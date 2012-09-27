@@ -183,6 +183,17 @@ def wipe_apt_repo():
     print('Removing APT repository: %s' % APT_REPO_DIR)
     if os.path.isdir(APT_REPO_DIR):
         shutil.rmtree(APT_REPO_DIR)
+    # Create anew
+    os.mkdir(APT_REPO_DIR)
+    repoconfdir = os.path.join(APT_REPO_DIR, 'conf')
+    os.mkdir(repoconfdir)
+    # Copy repo config files
+    dist_file = './apt/repository.distributions'
+    opts_file = './apt/repository.options'
+    dist_file_tgt = os.path.join(repoconfdir, 'distributions')
+    opts_file_tgt = os.path.join(repoconfdir, 'options')
+    shutil.copyfile(dist_file, dist_file_tgt)
+    shutil.copyfile(opts_file, opts_file_tgt)
 
 def setup_apt_repo():
     print('Checking for APT repository config...')

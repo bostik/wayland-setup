@@ -14,14 +14,6 @@ if [ ! -d ${DEBDIR} ]; then
     exit 1
 fi
 
-# Prepare repository
-if [ ! -d ${REPODIR} ]; then
-    mkdir ${REPODIR}
-    mkdir ${REPODIR}/conf
-    cp apt/repository.options ${REPODIR}/conf/options
-    cp apt/repository.distributions ${REPODIR}/conf/distributions
-fi
-
 # Running the repository creation commands from root of repo dir keeps
 # things straightforward and simple
 cd ${REPODIR}
