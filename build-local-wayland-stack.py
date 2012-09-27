@@ -7,8 +7,9 @@ import shutil
 import glob
 
 # Edit to match
-SOURCES_ROOT_DIR = '/home/bostik/kala'
-SOURCES_BUILD_DIR = '/home/bostik/build'
+_HOME = os.path.expanduser('~')
+SOURCES_ROOT_DIR = os.path.join(_HOME, 'kala')
+SOURCES_BUILD_DIR = os.path.join(_HOME, 'build')
 
 # Do not touch
 APT_REPO_DIR = '/var/tmp/wayland-devel-repo'
