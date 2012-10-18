@@ -1,20 +1,18 @@
 diff --git a/clients/Makefile.am b/clients/Makefile.am
-index 99a5e3f..52b1b38 100644
+index 85fc95c..bb54f38 100644
 --- a/clients/Makefile.am
 +++ b/clients/Makefile.am
-@@ -1,12 +1,12 @@
+@@ -1,11 +1,11 @@
  bin_PROGRAMS =					\
  	weston-info				\
--	$(terminal)
--
--noinst_PROGRAMS =				\
- 	$(clients_programs)			\
++	$(clients_programs)			\
++	$(simple_clients_programs)
+ 	$(terminal)
+ 
+ noinst_PROGRAMS =				\
+-	$(clients_programs)			\
 -	$(poppler_programs)			\
- 	$(simple_clients_programs)		\
- 	$(simple_egl_clients_programs)
-+	$(terminal)
-+
-+noinst_PROGRAMS =				\
+-	$(simple_clients_programs)
 +	$(poppler_programs)
  
  libexec_PROGRAMS =				\
