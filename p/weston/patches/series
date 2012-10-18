@@ -1,3 +1,2 @@
-setbacklight-flags.patch
 disable-weston-tests.patch
 install-all-clients.patch
