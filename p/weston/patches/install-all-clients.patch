@@ -6,14 +6,14 @@ index 85fc95c..bb54f38 100644
  bin_PROGRAMS =					\
  	weston-info				\
 +	$(clients_programs)			\
-+	$(simple_clients_programs)
++	$(simple_clients_programs)  \
  	$(terminal)
- 
+
  noinst_PROGRAMS =				\
 -	$(clients_programs)			\
 -	$(poppler_programs)			\
 -	$(simple_clients_programs)
 +	$(poppler_programs)
- 
+
  libexec_PROGRAMS =				\
  	$(desktop_shell)			\
