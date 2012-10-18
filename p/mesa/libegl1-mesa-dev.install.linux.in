@@ -10,4 +10,4 @@ dri/usr/lib/${DEB_HOST_MULTIARCH}/pkgconfig/wayland-egl.pc usr/lib/${DEB_HOST_MU
 dri/usr/lib/${DEB_HOST_MULTIARCH}/pkgconfig/gl.pc usr/lib/${DEB_HOST_MULTIARCH}/pkgconfig
 
 # DRI-core support
-dri/usr/lib/${DEB_HOST_MULTIARCH}/libdricore9.0.0.so usr/lib/${DEB_HOST_MULTIARCH}
+dri/usr/lib/${DEB_HOST_MULTIARCH}/libdricore9.1.0.so usr/lib/${DEB_HOST_MULTIARCH}
