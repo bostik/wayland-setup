@@ -5,7 +5,7 @@
         ******************************************************
 
 
-This script builds, packages and automatically installs Wayland 0.95
+This script builds, packages and automatically installs Wayland 0.99
 with DRM stack for testing and development purposes.
 
 TARGET SYSTEM:      Debian Sid
@@ -39,5 +39,5 @@ executing './apt/purge-packages.sh'
 
 
 Happy hacking!
-Mika Boström, 2012-09-28
+Mika Boström, 2012-10-18
 
