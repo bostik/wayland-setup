@@ -1,10 +1,13 @@
 diff --git a/Makefile.am b/Makefile.am
-index 8f5f83e..12d780f 100644
+index 306d7b3..5dbb141 100644
 --- a/Makefile.am
 +++ b/Makefile.am
-@@ -1,4 +1,4 @@
--SUBDIRS = src protocol doc tests cursor
-+SUBDIRS = src protocol doc cursor
+@@ -2,7 +2,7 @@ if BUILD_DOCS
+ doc_subdir = doc
+ endif
+ 
+-SUBDIRS = src protocol $(doc_subdir) tests cursor
++SUBDIRS = src protocol $(doc_subdir) cursor
  
  ACLOCAL_AMFLAGS = -I m4 ${ACLOCAL_FLAGS}
  
