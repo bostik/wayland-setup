@@ -1,3 +1,10 @@
+wayland (0.99.0-1) unstable; urgency=low
+
+  * NMU
+  * New snapshot release
+
+ -- Mika Boström <mika.bostrom@iki.fi>  Tue, 11 Sep 2012 07:40:19 +0300
+
 wayland (0.95.0-1) unstable; urgency=low
 
   * NMU

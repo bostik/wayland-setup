@@ -1,3 +1,10 @@
+mesa (9.0.1~1-1) unstable; urgency=high
+
+  * NMU
+  * Newer than 9.0 needed for Wayland 0.99+
+
+ -- Mika Boström <mika.bostrom@iki.fi>  Thu, 13 Sep 2012 08:33:50 +0300
+
 mesa (9.0~1-1) unstable; urgency=high
 
   * NMU
