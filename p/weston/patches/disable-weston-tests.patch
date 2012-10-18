@@ -1,24 +1,16 @@
-commit 44566d7e412ab4bb8f48600e80842e90ff8b0e8b
-Author: Mika Boström <bostik@odin.bostik.iki.fi>
-Date:   Sat Sep 22 10:01:30 2012 +0300
-
-    Drop tests from weston build
-    
-    We can just disable tests.
-
 diff --git a/Makefile.am b/Makefile.am
-index dcc320b..a56699d 100644
+index 7b1b1bc..9d8d376 100644
 --- a/Makefile.am
 +++ b/Makefile.am
 @@ -2,9 +2,9 @@ if BUILD_WCAP_TOOLS
  wcap_subdir = wcap
  endif
  
--SUBDIRS = shared src clients data protocol tests $(wcap_subdir)
-+SUBDIRS = shared src clients data protocol $(wcap_subdir)
+-SUBDIRS = shared src clients data protocol tests $(wcap_subdir) man
++SUBDIRS = shared src clients data protocol $(wcap_subdir) man
  
--DIST_SUBDIRS = shared src clients data protocol tests wcap
-+DIST_SUBDIRS = shared src clients data protocol wcap
+-DIST_SUBDIRS = shared src clients data protocol tests wcap man
++DIST_SUBDIRS = shared src clients data protocol wcap man
  
  
  DISTCHECK_CONFIGURE_FLAGS = --disable-setuid-install
