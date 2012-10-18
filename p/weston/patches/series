@@ -1,2 +1,3 @@
 disable-weston-tests.patch
+do-not-use-pixmap-bit.patch
 install-all-clients.patch
