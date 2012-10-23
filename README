@@ -5,8 +5,8 @@
         ******************************************************
 
 
-This script builds, packages and automatically installs Wayland 0.99
-with DRM stack for testing and development purposes.
+This script builds, packages and automatically installs Wayland 1.0 with
+DRM stack for testing and development purposes.
 
 TARGET SYSTEM:      Debian Sid
 TARGET AUDIENCE:    Developers
