@@ -1,3 +1,10 @@
+wayland (1.0-1) unstable; urgency=low
+
+  * NMU
+  * Official 1.0 release
+
+ -- Mika Boström <mika.bostrom@iki.fi>  Tue, 23 Sep 2012 07:42:01 +0300
+
 wayland (0.99.0-1) unstable; urgency=low
 
   * NMU
