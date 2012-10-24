@@ -1,3 +1,10 @@
+libxkbcommon (0.2.0-1) unstable; urgency=low
+
+  * NMU
+  * Release 0.2.0
+
+ -- Mika Boström <mika.bostrom@iki.fi>  Wed, 24 Sep 2012 10:05:32 +0300
+
 libxkbcommon (0.1.0~1-2) unstable; urgency=low
 
   * NMU
