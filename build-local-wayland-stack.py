@@ -32,9 +32,9 @@ SOURCE_GIT_REPOS = {
 SOURCE_GIT_REVS = {
     'cairo':        '1.12.2',
     'xkbcommon':    'xkbcommon-0.2.0',
-    'mesa':         'e20a0f14b5fdbff9afa5d0d6ee35de8728f6a200',
-    'wayland':      '1.0.0',
-    'weston':       '1.0.0',
+    'mesa':         'origin/9.0',
+    'wayland':      'origin/1.0',
+    'weston':       'origin/1.0',
     'libdrm':       '2.4.39',
 }
 
