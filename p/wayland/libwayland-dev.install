@@ -17,5 +17,6 @@ usr/lib/pkgconfig/wayland-cursor.pc
 usr/share/aclocal/wayland-scanner.m4
 usr/share/aclocal/wayland-scanner.mk
 
+# Not built by default now, leave out
 # Developer docs
-usr/share/doc/wayland/*
+#usr/share/doc/wayland/*

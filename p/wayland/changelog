@@ -1,3 +1,10 @@
+wayland (1.0.1-1.1) unstable; urgency=low
+
+  * NMU
+  * Built from wayland.git origin/1.0 branch
+
+ -- Mika Boström <bostik@iki.fi>  Mon, 03 Dec 2012 00:02:45 +0200
+
 wayland (1.0-1) unstable; urgency=low
 
   * NMU
