@@ -6,7 +6,9 @@ This script builds, packages and automatically installs Wayland 1.0 with
 DRM stack for testing and development purposes.
 
 *TARGET SYSTEM:*    Debian Sid
+
 *TARGET AUDIENCE:*  Developers
+
 May work with a recent Ubuntu. Not tested.
 
 
