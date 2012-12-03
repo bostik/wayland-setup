@@ -1,0 +1,9 @@
+The automation script is under 2-clause BSD license.
+
+The packaging files are copyright of their authors. All of them are DFSG
+compliant and thus freely distributable. (Otherwise they could not be
+mirrored.)
+
+Author of the automation script has done only some cursory modifications
+to original debianisation files.
+

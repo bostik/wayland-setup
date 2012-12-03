@@ -1,5 +1,9 @@
 #!/usr/bin/python3
 
+#
+# Distributable under 2-clause BSD license.
+#
+
 import os
 import sys
 import subprocess
