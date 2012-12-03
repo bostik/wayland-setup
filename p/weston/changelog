@@ -1,3 +1,10 @@
+weston (1.0.1-1.1) unstable; urgency=low
+
+  * NMU
+  * Post 1.0
+
+ -- Mika Boström <bostik@iki.fi>  Mon, 03 Dec 2012 09:21:54 +0200
+
 weston (1.0-1) unstable; urgency=low
 
   * NMU
