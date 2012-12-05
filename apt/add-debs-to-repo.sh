@@ -22,3 +22,8 @@ cd ${REPODIR}
 for f in ${DEBDIR}/*.deb; do
     reprepro includedeb wayland-local $f
 done
+
+# Add source packages to repository
+for f in ${DEBDIR}/*.dsc; do
+    reprepro includedsc wayland-local $f
+done

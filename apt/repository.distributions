@@ -1,6 +1,6 @@
 Origin: wayland-development
 Label: wayland-development
 Codename: wayland-local
-Architectures: amd64
+Architectures: amd64 source
 Components: main
 Description: locally built Wayland stack for development purposes

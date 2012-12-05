@@ -19,6 +19,9 @@ SOURCES_BUILD_DIR = os.path.join(_HOME, 'build')
 # Do not touch
 APT_REPO_DIR = '/var/tmp/wayland-devel-repo'
 
+# Used for package signing, set at set_repo_key()
+GPG_SIGN_KEY_ID = None
+
 # Tools
 TOOLS = set(['git', 'quilt', 'dpkg-buildpackage', 'fakeroot', 'reprepro'])
 
@@ -41,6 +44,7 @@ SOURCE_GIT_REVS = {
     'weston':       'origin/1.0',
     'libdrm':       '2.4.39',
 }
+
 
 # Setup output suppression for subprocess.*
 devnull = open('/dev/null', 'w')
@@ -130,7 +134,9 @@ def build_package(pkg):
     shutil.copytree(debdir, builddir + '/debian')
     #
     os.chdir(builddir)
-    subprocess.check_call(['dpkg-buildpackage', '-rfakeroot', '-b', '-uc', '-us'])
+    gpg_key_id_arg = '-k%s' % GPG_SIGN_KEY_ID   # XXX: Must be one string
+    subprocess.check_call(['dpkg-buildpackage', '-rfakeroot',
+        gpg_key_id_arg])
     os.chdir(_d)
 
 def install_pkgs(pkgs=None):
@@ -163,6 +169,11 @@ def set_repo_key():
     f = open(confpath, 'a')
     f.write('SignWith: ' + keyid + '\n')
     f.close()
+    #
+    # Store key-ID for 'dpkg-buildpackage' use
+    # NOTE: we're assigning to a global-scope var
+    global GPG_SIGN_KEY_ID
+    GPG_SIGN_KEY_ID = keyid
 
 def create_key():
     print('Checking for repository signing key...')
