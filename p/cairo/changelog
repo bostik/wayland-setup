@@ -1,3 +1,10 @@
+cairo (1.12.8-2.1egm) unstable; urgency=low
+
+  * NMU
+  * Newer version to build against
+
+ -- Mika Boström <bostik@iki.fi>  Thu, 06 Dec 2012 12:36:39 +0200
+
 cairo (1.12.2-2.1egl) unstable; urgency=low
 
   * NMU

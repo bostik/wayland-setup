@@ -37,7 +37,7 @@ SOURCE_GIT_REPOS = {
 
 # Yeah yeah, single dict and tuples for values instead of this...
 SOURCE_GIT_REVS = {
-    'cairo':        '1.12.2',
+    'cairo':        '1.12.8',
     'xkbcommon':    'xkbcommon-0.2.0',
     'mesa':         'origin/9.0',
     'wayland':      'origin/1.0',
