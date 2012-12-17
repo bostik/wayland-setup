@@ -1,3 +1,10 @@
+wayland (1.0.3-1.1) unstable; urgency=low
+
+  * NMY
+  * 1.0.3 introduced in wayland.git
+
+ -- Mika Boström <bostik@iki.fi>  Mon, 17 Dec 2012 10:54:33 +0200
+
 wayland (1.0.1-1.1) unstable; urgency=low
 
   * NMU
