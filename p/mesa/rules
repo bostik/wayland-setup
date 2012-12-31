@@ -53,7 +53,7 @@ confflags-common = \
 DRI_DRIVERS =
 GALLIUM_DRIVERS =
 
-EGL_DISPLAYS = x11
+EGL_DISPLAYS =
 
 # Gallium drivers require libdrm-{nouveau,radeon}, only available on Linux
 GALLIUM_DRIVERS +=nouveau,r600,r300,svga
