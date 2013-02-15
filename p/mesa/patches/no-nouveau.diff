@@ -1,0 +1,105 @@
+diff --git a/configure.ac b/configure.ac
+index 09ff880..9c38027 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -36,7 +36,6 @@ LIBDRM_REQUIRED=2.4.24
+ LIBDRM_RADEON_REQUIRED=2.4.39
+ LIBDRM_INTEL_REQUIRED=2.4.38
+ LIBDRM_NVVIEUX_REQUIRED=2.4.33
+-LIBDRM_NOUVEAU_REQUIRED=2.4.33
+ DRI2PROTO_REQUIRED=2.6
+ GLPROTO_REQUIRED=1.4.14
+ LIBDRM_XORG_REQUIRED=2.4.24
+@@ -646,7 +645,7 @@ GALLIUM_DRIVERS_DEFAULT="r300,r600,svga,swrast"
+ AC_ARG_WITH([gallium-drivers],
+     [AS_HELP_STRING([--with-gallium-drivers@<:@=DIRS...@:>@],
+         [comma delimited Gallium drivers list, e.g.
+-        "i915,nouveau,r300,r600,radeonsi,svga,swrast"
++        "i915,r300,r600,radeonsi,svga,swrast"
+         @<:@default=r300,r600,swrast@:>@])],
+     [with_gallium_drivers="$withval"],
+     [with_gallium_drivers="$GALLIUM_DRIVERS_DEFAULT"])
+@@ -1034,7 +1033,7 @@ if test "x$enable_dri" = xyes; then
+         case "$host_cpu" in
+         x86_64)
+             if test "x$DRI_DIRS" = "xyes"; then
+-                DRI_DIRS="i915 i965 nouveau r200 radeon swrast"
++                DRI_DIRS="i915 i965 r200 radeon swrast"
+             fi
+             ;;
+         powerpc*)
+@@ -1056,7 +1055,7 @@ if test "x$enable_dri" = xyes; then
+         DEFINES="$DEFINES -DIN_DRI_DRIVER -DHAVE_ALIAS"
+ 
+         if test "x$DRI_DIRS" = "xyes"; then
+-            DRI_DIRS="i915 i965 nouveau r200 radeon swrast"
++            DRI_DIRS="i915 i965 r200 radeon swrast"
+         fi
+         ;;
+     gnu*)
+@@ -1076,7 +1075,7 @@ if test "x$enable_dri" = xyes; then
+ 
+     # default drivers
+     if test "x$DRI_DIRS" = "xyes"; then
+-        DRI_DIRS="i915 i965 nouveau r200 radeon swrast"
++        DRI_DIRS="i915 i965 r200 radeon swrast"
+     fi
+ 
+     DRI_DIRS=`echo "$DRI_DIRS" | $SED 's/  */ /g'`
+@@ -1138,12 +1137,6 @@ case $DRI_DIRS in
+     ;;
+ esac
+ 
+-case $DRI_DIRS in
+-*nouveau*)
+-    PKG_CHECK_MODULES([NOUVEAU], [libdrm_nouveau >= $LIBDRM_NVVIEUX_REQUIRED])
+-    HAVE_NOUVEAU_DRI=yes;
+-    ;;
+-esac
+ 
+ case $DRI_DIRS in
+ *radeon*|*r200*)
+@@ -1171,7 +1164,6 @@ esac
+ 
+ AM_CONDITIONAL(HAVE_I915_DRI, test x$HAVE_I915_DRI = xyes)
+ AM_CONDITIONAL(HAVE_I965_DRI, test x$HAVE_I965_DRI = xyes)
+-AM_CONDITIONAL(HAVE_NOUVEAU_DRI, test x$HAVE_NOUVEAU_DRI = xyes)
+ AM_CONDITIONAL(HAVE_R200_DRI, test x$HAVE_R200_DRI = xyes)
+ AM_CONDITIONAL(HAVE_RADEON_DRI, test x$HAVE_RADEON_DRI = xyes)
+ AM_CONDITIONAL(HAVE_SWRAST_DRI, test x$HAVE_SWRAST_DRI = xyes)
+@@ -1863,12 +1855,6 @@ if test "x$with_gallium_drivers" != x; then
+ 	    NEED_RADEON_GALLIUM=yes;
+             gallium_check_st "radeon/drm" "dri-radeonsi" "xorg-radeonsi" "" "" "vdpau-radeonsi" ""
+             ;;
+-        xnouveau)
+-            PKG_CHECK_MODULES([NOUVEAU], [libdrm_nouveau >= $LIBDRM_NOUVEAU_REQUIRED])
+-            gallium_require_drm_loader
+-            GALLIUM_DRIVERS_DIRS="$GALLIUM_DRIVERS_DIRS nouveau nv30 nv50 nvc0"
+-            gallium_check_st "nouveau/drm" "dri-nouveau" "xorg-nouveau" "" "xvmc-nouveau" "vdpau-nouveau"
+-            ;;
+         xswrast)
+             GALLIUM_DRIVERS_DIRS="$GALLIUM_DRIVERS_DIRS softpipe"
+             if test "x$MESA_LLVM" = x1; then
+@@ -2020,7 +2006,6 @@ AC_CONFIG_FILES([configs/current
+ 		src/mesa/drivers/dri/i915/Makefile
+ 		src/mesa/drivers/dri/i965/Makefile
+ 		src/mesa/drivers/dri/Makefile
+-		src/mesa/drivers/dri/nouveau/Makefile
+ 		src/mesa/drivers/dri/r200/Makefile
+ 		src/mesa/drivers/dri/radeon/Makefile
+ 		src/mesa/drivers/dri/swrast/Makefile
+diff --git a/src/mesa/drivers/dri/Makefile.am b/src/mesa/drivers/dri/Makefile.am
+index 48d3685..a82029b 100644
+--- a/src/mesa/drivers/dri/Makefile.am
++++ b/src/mesa/drivers/dri/Makefile.am
+@@ -12,10 +12,6 @@ if HAVE_I965_DRI
+ SUBDIRS+=i965
+ endif
+ 
+-if HAVE_NOUVEAU_DRI
+-SUBDIRS+=nouveau
+-endif
+-
+ if HAVE_R200_DRI
+ SUBDIRS+=r200
+ endif
