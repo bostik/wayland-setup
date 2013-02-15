@@ -1,3 +1,9 @@
+weston (1.0.5-1) unstable; urgency=low
+
+  * New version available in weston.git
+
+ -- Mika Boström <bostik@iki.fi>  Fri, 15 Feb 2013 11:40:13 +0200
+
 weston (1.0.3-1.1) unstable; urgency=low
 
   * NMU
