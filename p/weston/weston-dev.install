@@ -1,0 +1,5 @@
+usr/include/weston
+
+usr/share/man/man5
+
+usr/lib/pkgconfig/weston.pc
