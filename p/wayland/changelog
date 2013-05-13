@@ -1,8 +1,8 @@
-wayland (1.0.5-1) unstable; urgency=low
+wayland (1.0.6-1) unstable; urgency=low
 
   * New version available in wayland.git
 
- -- Mika Boström <bostik@iki.fi>  Fri, 15 Feb 2013 11:38:52 +0200
+ -- Mika Boström <bostik@iki.fi>  Mon, 13 May 2013 13:56:18 +0200
 
 wayland (1.0.3-1.1) unstable; urgency=low
 

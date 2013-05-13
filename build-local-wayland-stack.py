@@ -39,9 +39,9 @@ SOURCE_GIT_REPOS = {
 SOURCE_GIT_REVS = {
     'cairo':        '1.12.8',
     'xkbcommon':    'xkbcommon-0.2.0',
-    'mesa':         'origin/9.0',
-    'wayland':      'origin/1.0',
-    'weston':       'origin/1.0',
+    'mesa':         'mesa-9.0.3',
+    'wayland':      '1.0.6',
+    'weston':       '1.0.6',
     'libdrm':       '2.4.39',
 }
 
@@ -262,8 +262,8 @@ build_package('wayland')
 import_debs()
 install_pkgs(['libwayland-dev'])
 
-build_package('libdrm')
-import_debs()
+###build_package('libdrm')
+###import_debs()
 install_pkgs(['libdrm-dev'])
 
 build_package('mesa')
