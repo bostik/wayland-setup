@@ -1,6 +1,7 @@
 weston (1.0.6-1) unstable; urgency=low
 
   * New version available in weston.git
+  * New package: weston-dev with "SDK" development files
 
  -- Mika Boström <bostik@iki.fi>  Mon, 13 May 2013 13:57:09 +0200
 

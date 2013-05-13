@@ -45,3 +45,21 @@ Description: reference implementation of a wayland compositor
  KMS and ships with a few demo clients. The Weston compositor is a minimal
  and fast compositor and is suitable for many embedded and mobile use
  cases.
+
+Package: weston-dev
+Architecture: linux-any
+Depends: weston (= ${binary:Version}),
+    libegl1-mesa-dev,
+    libwayland-dev,
+    libxkbcommon-dev,
+    libpixman-1-dev,
+Description: reference compositor SDK files
+ Part of the Wayland project is also the Weston reference implementation
+ of a Wayland compositor. Weston can run as an X client or under Linux
+ KMS and ships with a few demo clients. The Weston compositor is a minimal
+ and fast compositor and is suitable for many embedded and mobile use
+ cases.
+ .
+ This package contains the SDK files needed to develop weston plugins and
+ other external software.
+
